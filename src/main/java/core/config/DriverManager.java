@@ -45,7 +45,7 @@ public final class DriverManager {
      * @param selectedBrowser - browser name from properties, that will be used in tests
      */
     private void initWebDriver(String selectedBrowser) {
-        UsingBrowser usingBrowser = UsingBrowser.valueOf(selectedBrowser);
+        UsingBrowser usingBrowser = UsingBrowser.valueOf(selectedBrowser.toUpperCase());
         switch (usingBrowser) {
             case CHROME: {
                 WebDriverManager.chromedriver().setup();
