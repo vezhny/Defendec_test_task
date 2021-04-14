@@ -4,9 +4,11 @@
 3. Chrome or Firefox Browser
 
 **Run:**
-Execute command: mvn clean test allure:aggregate -Dmaven.test.failure.ignore=true
+Execute command: _mvn clean test allure:aggregate -Dmaven.test.failure.ignore=true_
 
 **Note:**
 1. You can get report after run by opening **index.html**. Path: _target\site\allure-maven-plugin\index.html_
 2. File **config.properties** (_src\main\resources\config.properties_) has base urls and using browser configs.
-You can set up **environment variable** (same as property in properties file) to provide using browser or base url for Api tests. 
+3.Apply _-Dselenium.browser=<**browser_name**>_ to your run command to specify using browser.
+4. Specify _-Dtest=<test_class>_ param to run needed tests in class
+5. Specify _-Dtest=<test_class>#<test_method>_ to run needed test
