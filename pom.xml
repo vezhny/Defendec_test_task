@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.plugin>3.7.0</maven.compiler.plugin>
         <java.version>1.8</java.version>
-        <maven.surefire.plugin.version>3.0.0-M4</maven.surefire.plugin.version>
+        <maven.surefire.plugin.version>3.0.0-M5</maven.surefire.plugin.version>
 <!--        <jackson.version>2.10.0</jackson.version>-->
         <lombok.version>1.18.16</lombok.version>
         <slf4j.version>1.7.30</slf4j.version>
@@ -172,9 +172,6 @@
                         </property>
                     </systemProperties>
                     <reportFormat>xml</reportFormat>
-                    <excludes>
-                        <exclude>**/Test*.java</exclude>
-                    </excludes>
                 </configuration>
                 <dependencies>
                     <dependency>
