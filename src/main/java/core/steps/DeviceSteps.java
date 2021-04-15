@@ -1,8 +1,13 @@
 package core.steps;
 
+import core.config.PropertiesProvider;
 import core.pages.DevicePage;
 import core.pages.DevicesPage;
 import core.pages.NavigationBar;
+import io.qameta.allure.Step;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
 import java.time.LocalDateTime;
@@ -20,15 +25,24 @@ public class DeviceSteps extends BaseStep{
         navigationBar = new NavigationBar(webDriver);
     }
 
+    @Step("Get device id")
     public String getDeviceId() {
         return devicePage.getDeviceId();
     }
 
+    @Step("Get to devices")
     public void getToDevices() {
         navigationBar.selectItem("Devices");
     }
 
-    public LocalDateTime getLastConnectionTime(String deviceId) {
-        return devicesPage.getDeviceLastConnection(deviceId);
+    public void getLastConnectionTime(String deviceId) {
+        LocalDateTime lastConnectionTime = devicesPage.getDeviceLastConnection(deviceId);
+        checkLastConnectionInterval(lastConnectionTime);
+    }
+
+    @Step("Check last connection time")
+    private void checkLastConnectionInterval(LocalDateTime lastConnectionTime) {
+        LocalDateTime now = LocalDateTime.now().minusMinutes(Long.parseLong(PropertiesProvider.getDeviceConnectionInterval()));
+        MatcherAssert.assertThat(lastConnectionTime.getMinute(), Matchers.lessThanOrEqualTo(now.getMinute()));
     }
 }

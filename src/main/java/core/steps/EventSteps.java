@@ -3,6 +3,7 @@ package core.steps;
 import core.pages.EventPage;
 import core.pages.EventsPage;
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class EventSteps extends BaseStep {
 
@@ -24,6 +26,7 @@ public class EventSteps extends BaseStep {
         eventPage = new EventPage(webDriver);
     }
 
+    @Story("Get last event")
     public void getLastEvent() {
         eventsPage.load();
         eventsPage.getNavigationBar().getSelectedItem();
@@ -33,13 +36,7 @@ public class EventSteps extends BaseStep {
         eventsPage.selectLastEvent();
     }
 
-    public LocalDateTime getLastEventTimestamp() {
-        eventsPage.selectLastEvent();
-        String dateTime = eventPage.getDate().getText().trim() + " " + eventPage.getTime().getText().trim();
-        LocalDateTime timestamp = LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern("MM-dd HH:mm:ss"));
-        return timestamp;
-    }
-
+    @Step("Device name click")
     public void clickDeviceName() {
         eventPage.deviceClick();
     }

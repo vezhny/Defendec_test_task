@@ -27,6 +27,9 @@ public final class PropertiesProvider {
     /** Property name: user password */
     private static final String USER_PASSWORD_PROPERTY_NAME = "user.password";
 
+    /** Property name: device connection interval */
+    private static final String DEVICE_CONNECTION_INTERVAL_PROPERTY_NAME = "device.connection.interval";
+
     private PropertiesProvider() {
         config = new Properties();
         try {
@@ -77,11 +80,15 @@ public final class PropertiesProvider {
     }
 
     public static String getUserLogin() {
-        return getInstance().config.getProperty(USER_LOGIN_PROPERTY_NAME);
+        return getPropertyValue(USER_LOGIN_PROPERTY_NAME);
     }
 
     public static String getUserPassword() {
-        return getInstance().config.getProperty(USER_PASSWORD_PROPERTY_NAME);
+        return getPropertyValue(USER_PASSWORD_PROPERTY_NAME);
+    }
+
+    public static String getDeviceConnectionInterval() {
+        return getPropertyValue(DEVICE_CONNECTION_INTERVAL_PROPERTY_NAME);
     }
 
     /**

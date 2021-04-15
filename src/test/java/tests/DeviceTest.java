@@ -4,6 +4,7 @@ import core.steps.DeviceSteps;
 import core.steps.EventSteps;
 import core.steps.LoginSteps;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -15,11 +16,11 @@ public class DeviceTest extends DefendecTestBase {
     private EventSteps eventSteps = new EventSteps(webDriver);
     private DeviceSteps deviceSteps = new DeviceSteps(webDriver);
 
+    @Story("Connection range")
     @Test
-    public void first() {
+    public void test() {
         loginSteps.login();
         eventSteps.getLastEvent();
-//        LocalDateTime eventTimeStamp = eventSteps.getLastEventTimestamp();
         eventSteps.clickDeviceName();
         String deviceId = deviceSteps.getDeviceId();
         deviceSteps.getToDevices();

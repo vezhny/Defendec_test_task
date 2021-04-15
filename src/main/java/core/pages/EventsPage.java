@@ -33,7 +33,8 @@ public class EventsPage extends PageBase {
     }
 
     public EventsPage selectLastEvent() {
-        events.get(0).click();
+        WebElement lastEvent = events.get(0);
+        lastEvent.click();
         return this;
     }
 }

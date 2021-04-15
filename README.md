@@ -9,6 +9,7 @@ Execute command: _mvn clean test allure:aggregate -Dmaven.test.failure.ignore=tr
 **Note:**
 1. You can get report after run by opening **index.html**. Path: _target\site\allure-maven-plugin\index.html_
 2. File **config.properties** (_src\main\resources\config.properties_) has base urls and using browser configs.
-3.Apply _-Dselenium.browser=<**browser_name**>_ to your run command to specify using browser.
+3.Apply _-Dselenium.browser=<**browser_name**>_ to your run command to specify using browser. You can do the same with
+each property in file
 4. Specify _-Dtest=<test_class>_ param to run needed tests in class
 5. Specify _-Dtest=<test_class>#<test_method>_ to run needed test
