@@ -16,7 +16,7 @@ public class LoginPage extends PageBase {
     @FindBy(id = "id3")
     private WebElement passwordTextField;
 
-    @FindBy(xpath = ".//@id='submit-row'/input")
+    @FindBy(xpath = ".//*[@id='submit-row']/input")
     private WebElement logInButton;
 
     public LoginPage(WebDriver webDriver) {
