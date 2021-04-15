@@ -24,7 +24,7 @@ public class LoginPage extends PageBase {
     }
 
     @Override
-    public PageBase load() {
+    public LoginPage load() {
         waitFor(ExpectedConditions.visibilityOfAllElements(loginTextField, passwordTextField, logInButton));
         return this;
     }
