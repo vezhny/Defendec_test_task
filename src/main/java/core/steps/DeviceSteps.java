@@ -43,6 +43,6 @@ public class DeviceSteps extends BaseStep{
     @Step("Check last connection time")
     private void checkLastConnectionInterval(LocalDateTime lastConnectionTime) {
         LocalDateTime now = LocalDateTime.now().minusMinutes(Long.parseLong(PropertiesProvider.getDeviceConnectionInterval()));
-        MatcherAssert.assertThat(lastConnectionTime.getMinute(), Matchers.lessThanOrEqualTo(now.getMinute()));
+        Assertions.assertTrue(lastConnectionTime.isAfter(now), "Last connection date is too far");
     }
 }
