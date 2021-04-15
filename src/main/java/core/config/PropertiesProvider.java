@@ -15,11 +15,17 @@ public final class PropertiesProvider {
     private Properties config;
     private static volatile PropertiesProvider instance;
 
-    /** Property name: using selenium browser*/
+    /** Property name: using selenium browser */
     private static final String SELENIUM_BROWSER_PROPERTY_NAME = "selenium.browser";
 
-    /** Property name: selenium base page url*/
+    /** Property name: selenium base page url */
     private static final String SELENIUM_BASE_URL_PROPERTY_NAME = "selenium.base.url";
+
+    /** Property name: user login */
+    private static final String USER_LOGIN_PROPERTY_NAME = "user.login";
+
+    /** Property name: user password */
+    private static final String USER_PASSWORD_PROPERTY_NAME = "user.password";
 
     private PropertiesProvider() {
         config = new Properties();
@@ -68,6 +74,14 @@ public final class PropertiesProvider {
      */
     public static String getSeleniumBaseUrl() {
         return getInstance().config.getProperty(SELENIUM_BASE_URL_PROPERTY_NAME);
+    }
+
+    public static String getUserLogin() {
+        return getInstance().config.getProperty(USER_LOGIN_PROPERTY_NAME);
+    }
+
+    public static String getUserPassword() {
+        return getInstance().config.getProperty(USER_PASSWORD_PROPERTY_NAME);
     }
 
     /**
