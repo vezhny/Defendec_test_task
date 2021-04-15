@@ -12,7 +12,7 @@ import java.util.List;
 @Slf4j
 public class FilterMenu extends PageBase {
 
-    @FindBy(xpath = ".//*[@class='menu-block']/div")
+    @FindBy(xpath = "//*/div[@class='menu-block']//div[contains(@class,'filter')]  ")
     private List<WebElement> filters;
 
     public FilterMenu(WebDriver webDriver) {
@@ -25,13 +25,13 @@ public class FilterMenu extends PageBase {
         return this;
     }
 
-    public List<WebElement> getSelectedFilters() {
+    public List<String> getSelectedFilters() {
         log.debug("Getting selected filters");
-        List<WebElement> selectedFilters = new ArrayList<>();
+        List<String> selectedFilters = new ArrayList<>();
         for (WebElement filter : filters) {
-            if (!filter.getCssValue("background").equals("#356b7d!important")) {
-                log.debug("Selected filter " + filter);
-                selectedFilters.add(filter);
+            if (filter.getCssValue("background").contains("rgba(0, 0, 0, 0)")) {
+                log.debug("Selected filter " + filter.getText());
+                selectedFilters.add(filter.getText());
             }
         }
         return selectedFilters;

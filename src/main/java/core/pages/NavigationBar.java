@@ -27,8 +27,8 @@ public class NavigationBar extends PageBase {
     public WebElement getSelectedItem() {
         log.debug("Getting selected item from navi bar");
         for (WebElement item : menuItems) {
-            if (item.getCssValue("color").equals("#fff")) {
-                log.debug("Selected item is " + item);
+            if (item.getCssValue("color").equals("rgba(255, 255, 255, 1)")) {
+                log.debug("Selected item is " + item.getText());
                 return item;
             }
         }

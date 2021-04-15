@@ -17,12 +17,12 @@ public class LoginSteps extends BaseStep{
     }
 
     @Step("Log in")
-    public PageBase login() {
+    public void login() {
         String login = PropertiesProvider.getUserLogin();
         String password = PropertiesProvider.getUserPassword();
         Allure.parameter("Login", login);
         Allure.parameter("Password", password);
-        return loginPage
+        loginPage
                 .load()
                 .enterLogin(login)
                 .enterPassword(password)
