@@ -25,6 +25,7 @@ public class EventSteps extends BaseStep {
         eventsPage.getFilterMenu().getSelectedFilters();
         checkNavigationBarItem("Events");
         checkSelectedFilters("Maintenance events");
+        eventsPage.selectEventNumber(1);
     }
 
     @Step("Check selected navigation bar item is \"{0}\"")
