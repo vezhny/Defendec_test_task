@@ -34,4 +34,14 @@ public class NavigationBar extends PageBase {
         }
         throw new RuntimeException("Unable to get selected item from navigation bar");
     }
+
+    public NavigationBar selectItem(String itemName) {
+        for (WebElement item : menuItems) {
+            if (item.getText().contains(itemName)) {
+                item.click();
+                return this;
+            }
+        }
+        throw new RuntimeException("Unable to get item \"" + itemName + "\" from navigation bar");
+    }
 }

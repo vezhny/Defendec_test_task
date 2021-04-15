@@ -32,8 +32,8 @@ public class EventsPage extends PageBase {
         return this;
     }
 
-    public EventsPage selectEventNumber(int number) {
-        events.get(number - 1).click();
+    public EventsPage selectLastEvent() {
+        events.get(0).click();
         return this;
     }
 }

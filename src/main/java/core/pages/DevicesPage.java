@@ -8,7 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 @Slf4j
 public class DevicesPage extends PageBase{
@@ -16,7 +18,7 @@ public class DevicesPage extends PageBase{
     @FindBy(xpath = "//datatable-header-cell")
     private List<WebElement> headerCells;
 
-    @FindBy(xpath = "datatable-row-wrapper")
+    @FindBy(xpath = "//datatable-row-wrapper")
     private List<WebElement> devices;
 
     public DevicesPage(WebDriver webDriver) {
@@ -34,7 +36,8 @@ public class DevicesPage extends PageBase{
         for (WebElement device : devices) {
             log.debug(device.getText());
             if (device.findElement(By.xpath(".//*[contains(@href, '/device/')]")).getText().equals(deviceId)) {
-                return LocalDateTime.parse(device.findElement(By.xpath(".//*/datatable-body-cell[9]/div")).getText());
+                String lastConnectionDate = device.findElement(By.xpath(".//*/datatable-body-cell[9]/div")).getText();
+                return LocalDateTime.parse(lastConnectionDate, DateTimeFormatter.ofPattern("HH:mm dd-MMM-yyyy", Locale.US));
             }
         }
         throw new RuntimeException("Device with id \"" + deviceId + "\" not found");
